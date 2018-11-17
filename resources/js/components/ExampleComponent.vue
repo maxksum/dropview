@@ -3,21 +3,34 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card card-default">
-                    <div class="card-header">Example Component</div>
-
-                    <div class="card-body">
-                        I'm an example component.
-                    </div>
+                  <input type="text" id="searchreq">
+                  <input type="button" value="CLICK HERE" v-on:click="newfunction()">
                 </div>
             </div>
+        </div>
+        <div v-for="album in albums" style="border-style: solid;">
+          <img :src="album.images[1].url">
+          <h1>{{ album.name }}</h1>
+          <h2>{{ album.artists[0].name }}</h2>
+          <h2>{{ album.release_date }}</h2>
         </div>
     </div>
 </template>
 
 <script>
     export default {
-        mounted() {
-            console.log('Component mounted.')
-        }
+      props: ['newfunction', 'albums', 'searchrequest'],
+      mounted() {
+        console.log('Component mounted.')
+      },
+      methods: {
+        checkAlbum: function(album) {
+          /*if (album.name.indexOf(this.searchrequest) != -1) {
+            console.log("GET IT");
+            return true;
+          }*/
+          return true;
+        },
+      }
     }
 </script>
