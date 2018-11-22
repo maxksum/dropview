@@ -8,10 +8,8 @@
 require('./bootstrap');
 
 import Vue from 'vue';
-import axios from 'axios'
-
+import axios from 'axios';
 window.Vue = require('vue');
-
 
 /**
  * The following block of code may be used to automatically register your
@@ -45,14 +43,25 @@ import ExampleComponent from './components/ExampleComponent.vue';
   data: {
      albums: [],
      search: "",
+     atoken: atoken,
    },
+  mounted() {
+    console.log(this.atoken);
+  },
+  created: function() {
+    Echo.channel("Token")
+    .listen(".refresh", (e) => {
+      this.atoken = e.accessToken;
+      console.log("CHANGED ACCESS TOKEN");
+  });
+  },
   methods: {
     newFunction: function() {
       var Spotify = require('spotify-web-api-js');
       var s = new Spotify();
       var temp = this;
       this.search = $('#searchreq').val();
-      s.setAccessToken('BQAUdyIU6TIK61eKGZEXwKiGRQ3tpUcxqnPb5TDrob0meZW0BEz8d_Dyl727gL7L2CDGnXaEmmp0ZcKfUqKD6Oa6cfQKrvtgCrv4dh8grVps2Ch4JeBAgHne2l7tasF0zRdQ71rRqiALnQvS3I6wDL6i4Z80E--hRQg7WVHEQHIkb4dauELe');
+      s.setAccessToken(this.atoken);
       /*s.getArtistAlbums('43ZHCT0cAZBISjO8DG9PnE', function(err, data) {
         if (err) console.error(err);
         else temp.albums = data.items;

@@ -172,6 +172,10 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\SpotifyServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
+
+        'Laracasts\Utilities\JavaScript\JavaScriptServiceProvider',
 
     ],
 

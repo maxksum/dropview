@@ -20,6 +20,9 @@
         "vue": "^2.5.17"
     },
     "dependencies": {
+        "express": "^4.16.4",
+        "laravel-echo": "^1.4.1",
+        "socket.io-client": "^2.1.1",
         "spotify-web-api-js": "^1.1.1"
     }
 }

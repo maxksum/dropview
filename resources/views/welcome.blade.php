@@ -10,6 +10,7 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
 
+        <script src="//{{ Request::getHost() }}:8443/socket.io/socket.io.js"></script>
         <!-- Styles -->
         <style>
             html, body {
@@ -91,6 +92,14 @@
         </div>
 
       </div>
+      <script type="text/javascript">
+        var atoken = <?php echo json_encode($atoken) ?>;
+        function refreshToken() {
+          $.get('/refresh');
+        }
+
+        setInterval(refreshToken, 3540000);
+      </script>
       <script src="/js/app.js"></script>
     </body>
 </html>

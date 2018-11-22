@@ -44,13 +44,12 @@ if (token) {
  * allows your team to easily build robust real-time web applications.
  */
 
-// import Echo from 'laravel-echo'
+ import Echo from "laravel-echo"
 
-// window.Pusher = require('pusher-js');
+ var prefix = process.env.MIX_LOCAL == 1 ? 'http' : 'https';
+ var port = process.env.MIX_SOCKET_PORT ? process.env.MIX_SOCKET_PORT : 8443;
 
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: process.env.MIX_PUSHER_APP_KEY,
-//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//     encrypted: true
-// });
+ window.Echo = new Echo({
+   broadcaster: 'socket.io',
+   host: prefix + '://' + window.location.hostname + ':' + port
+ });
