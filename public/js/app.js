@@ -24988,6 +24988,9 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
       s.searchAlbums(this.search, { limit: 50 }).then(function (data) {
         console.log(data.albums.items);
         temp.albums = data.albums.items;
+        s.getArtist(temp.albums[0].artists[0].id).then(function (data) {
+          console.log(data);
+        });
       }, function (err) {
         console.error(err);
       });
